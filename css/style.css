@@ -1,0 +1,266 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  height: 100vh;
+  background: #F1F5F9;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  background: linear-gradient(180deg, #1E3A8A, #1D4ED8);
+  color: #E0E7FF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 20px;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+}
+
+.sidebar h1 {
+  font-size: 24px;
+  margin-bottom: 50px;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+/* Botones */
+.btn {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  margin: 12px 0;
+  border: none;
+  border-radius: 10px;
+  background: #3B82F6;
+  color: #FFF;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+}
+
+.btn:hover {
+  background: #2563EB;
+  transform: translateY(-2px);
+}
+
+/* Content */
+.content {
+  flex: 1;
+  background: #F8FAFC;
+  padding: 40px;
+  overflow-y: auto;
+}
+
+.content h2 {
+  font-size: 26px;
+  color: #1E3A8A;
+  margin-bottom: 15px;
+}
+
+.content p {
+  font-size: 16px;
+  color: #475569;
+}
+
+/* Tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; /* IMPORTANTE: Evita que la tabla se rompa */
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #E2E8F0;
+  word-wrap: break-word; /* Permite que el texto largo se ajuste */
+}
+
+th {
+  background: #EFF6FF;
+  color: #1E3A8A;
+}
+
+td {
+  color: #334155;
+  vertical-align: middle; /* Alinea todo verticalmente al centro */
+}
+
+/* Centrar columnas Completado y Acciones */
+th:nth-child(3), td:nth-child(3), /* Completado */
+th:nth-child(4), td:nth-child(4) { /* Acciones */
+  text-align: center;
+}
+
+/* Ajustar ancho de columnas */
+th:nth-child(1) { width: 25%; } /* Título */
+th:nth-child(2) { width: 40%; } /* Descripción */
+th:nth-child(3) { width: 15%; } /* Completado */
+th:nth-child(4) { width: 20%; } /* Acciones */
+
+/* Acciones */
+.acciones {
+  display: flex;
+  flex-direction: row;
+  justify-content: center; 
+  align-items: center; 
+  gap: 8px; 
+  margin: 0 auto;
+}
+
+.acciones button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 6px;
+  transition: transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+}
+
+.acciones button:hover {
+  transform: scale(1.1);
+  background-color: #f0f0f0;
+}
+
+/* Prevenir que el texto largo rompa la tabla */
+td:nth-child(1), 
+td:nth-child(2) {
+  max-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ===== FORMULARIO ===== */
+#formTarea {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  background: #f8fbff;
+  border: 1px solid #d0e2ff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 50, 100, 0.1);
+  max-width: 400px;
+  margin: 40px auto;
+}
+
+#formTarea label {
+  font-weight: 600;
+  font-size: 14px;
+  color: #004080;
+}
+
+#formTarea input,
+#formTarea textarea {
+  padding: 10px;
+  border: 1px solid #a8c4ff;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#formTarea textarea {
+  height: 50px; 
+  resize: none;
+  overflow-y: auto;
+}
+
+#formTarea input:focus,
+#formTarea textarea:focus {
+  border-color: #0066cc;
+  box-shadow: 0 0 4px rgba(0, 102, 204, 0.3);
+}
+
+#formTarea .btn.crear {
+  background: #0066cc;
+  color: white;
+  padding: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+#formTarea .btn.crear:hover {
+  background: #004c99;
+}
+
+/* Estilos para el buscador */
+.buscador {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+  margin-bottom: 20px;
+  max-width: 600px; 
+}
+
+.input-wrapper {
+  flex: 1;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+  height: 40px; 
+  box-sizing: border-box;
+}
+
+.button-wrapper {
+  display: flex;
+  align-items: stretch;
+}
+
+.button-wrapper button {
+  height: 40px; 
+  padding: 0 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s;
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+}
+
+.button-wrapper button:hover {
+  background-color: #0056b3;
+}
+
+/*Boton cancelar*/
+.btn.cancelar {
+  background: #6B7280;
+  margin-top: 8px;
+}
+
+.btn.cancelar:hover {
+  background: #4B5563;
+}

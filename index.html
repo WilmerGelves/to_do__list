@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>TO-DO-LIST</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <!-- Panel lateral -->
+  <div class="sidebar">
+    <h1>TO-DO-LIST</h1>
+    <button class="btn" onclick="mostrarCrear()">Crear tarea</button>
+    <button class="btn" onclick="mostrarLista()">Ver lista de tareas</button>
+  </div>
+
+  <!-- Contenido principal -->
+    <div class="content">
+        <h2 id="titulo">Bienvenido 👋</h2>
+
+        <!-- Aquí se insertarán los datos -->
+        <div id="formularioContenedor" style="display:none;"></div>
+
+        <div id="listaContenedor" style="display:none;">
+            <div class="buscador">
+                <div class="input-wrapper">
+                    <input type="text" id="filtro" placeholder="Buscar por palabras clave...">
+                </div>
+                <div class="button-wrapper">
+                    <button onclick="buscarTareas()">🔍Buscar</button>
+                </div>
+            </div>
+
+            <table id="tablaTareas">
+                <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Descripción</th>
+                    <th>Completado</th>
+                    <th>Acciones</th>
+                </tr>
+                </thead>
+                <tbody id="bodyTareas"></tbody>
+            </table>
+        </div>
+
+    </div>
+  <script src="/js/app.js"></script>
+</body>
+</html>
