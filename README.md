@@ -21,14 +21,16 @@ Una aplicación web moderna y responsive para gestionar tus tareas diarias. Desa
 - **Almacenamiento**: Persistencia en base de datos mediante API
 
 ## 📦 Estructura del Proyecto
+```bash
 todo-list-app/
 │
-├── index.html # Estructura principal de la aplicación
+├── index.html          # Estructura principal de la aplicación
 ├── css/
-│ └── style.css # Estilos principales
+│   └── style.css       # Estilos principales
 ├── js/
-│ └── app.js # Lógica de la aplicación
-└── README.md # Documentación
+│   └── app.js          # Lógica de la aplicación
+└── README.md           # Documentación
+```
 
 
 ## 🔌 API Endpoints
