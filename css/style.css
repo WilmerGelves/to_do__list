@@ -10,6 +10,55 @@ body {
   display: flex;
   height: 100vh;
   background: #F1F5F9;
+  position: relative;
+}
+
+/* Menú Hamburguesa */
+.hamburger-menu {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1001;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.hamburger-menu span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: #1E3A8A;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.hamburger-menu.active span:nth-child(1) { /*Averiguar este fragmento*/
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger-menu.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-menu.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Overlay */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 998;
 }
 
 /* Sidebar */
@@ -22,6 +71,8 @@ body {
   align-items: center;
   padding: 30px 20px;
   box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  z-index: 999;
 }
 
 .sidebar h1 {
@@ -57,10 +108,11 @@ body {
 
 /* Content */
 .content {
-  flex: 1;
+  flex: 1; /*Para ocupar todo el espacio disponible*/
   background: #F8FAFC;
   padding: 40px;
   overflow-y: auto;
+  transition: margin-left 0.3s ease;
 }
 
 .content h2 {
@@ -77,8 +129,8 @@ body {
 /* Tabla */
 table {
   width: 100%;
-  border-collapse: collapse;
-  table-layout: fixed; /* IMPORTANTE: Evita que la tabla se rompa */
+  border-collapse: collapse; /*Sin esto, cada celda tiene su propio borde y puede verse doble*/
+  table-layout: fixed; /* IMPORTANTE: Evita que la tabla se rompa*/
 }
 
 th, td {
@@ -141,12 +193,12 @@ th:nth-child(4) { width: 20%; } /* Acciones */
 }
 
 /* Prevenir que el texto largo rompa la tabla */
-td:nth-child(1), 
+td:nth-child(1), /*Averiguar este fragmento*/
 td:nth-child(2) {
   max-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow: hidden;/*Oculta  contenido que no quepa*/
+  text-overflow: ellipsis;/*muestra los 3 puntos*/
+  white-space: nowrap;/*Evita saltos de linea*/
 }
 
 /* ===== FORMULARIO ===== */
@@ -210,7 +262,7 @@ td:nth-child(2) {
 /* Estilos para el buscador */
 .buscador {
   display: flex;
-  align-items: stretch;
+  align-items: stretch;/*estira elementos para ocupar espacio disponible*/
   gap: 10px;
   margin-bottom: 20px;
   max-width: 600px; 
@@ -246,9 +298,6 @@ td:nth-child(2) {
   cursor: pointer;
   font-size: 14px;
   transition: background 0.3s;
-  display: flex;
-  align-items: center; 
-  justify-content: center; 
 }
 
 .button-wrapper button:hover {
@@ -263,4 +312,70 @@ td:nth-child(2) {
 
 .btn.cancelar:hover {
   background: #4B5563;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  .hamburger-menu {
+    display: flex;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    transform: translateX(-100%);
+    z-index: 999;
+  }
+
+  .sidebar.active {
+    transform: translateX(0);
+  }
+
+  .content {
+    margin-left: 0;
+    padding: 60px 20px 20px 20px;
+  }
+
+  /*Hace que un elemento que no este activo vuelva a su estado normal, en este caso el panel cuando se da clic fuera de él*/
+  .overlay.active { 
+    display: block;
+  }
+
+  /* Ajustes para tabla en móviles */
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  th:nth-child(1), td:nth-child(1) { width: 30%; }
+  th:nth-child(2), td:nth-child(2) { width: 35%; }
+  th:nth-child(3), td:nth-child(3) { width: 15%; }
+  th:nth-child(4), td:nth-child(4) { width: 20%; }
+
+  .buscador {
+    flex-direction: column;
+  }
+
+  .button-wrapper button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    padding: 60px 15px 15px 15px;
+  }
+
+  #formTarea {
+    margin: 20px auto;
+    padding: 15px;
+  }
+
+  .sidebar {
+    width: 100%;
+    max-width: 280px;
+  }
 }

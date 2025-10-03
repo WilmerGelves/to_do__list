@@ -4,27 +4,26 @@ let tareas = [];
 
 function mostrarCrear() {
   document.getElementById("titulo").innerText = "Crear tarea nueva";
-
   document.getElementById("formularioContenedor").style.display = "block";
   document.getElementById("listaContenedor").style.display = "none";
-
   document.getElementById("formularioContenedor").innerHTML = `
     <form id="formTarea" onsubmit="crearTarea(event)">
       <label for="title">Título</label>
       <input type="text" id="title" required>
-
       <label for="description">Descripción</label>
       <textarea id="description" required></textarea>
-
       <label for="priority">Prioridad</label>
       <input type="number" id="priority" min="0" max="5" value="0">
-
       <label for="dueAt">Fecha límite</label>
       <input type="datetime-local" id="dueAt">
-
       <button type="submit" class="btn crear">Crear</button>
     </form>
   `;
+  
+  // Cerrar menú en móviles después de seleccionar una opción
+  if (window.innerWidth <= 768) {
+    toggleMenu();
+  }
 }
 
 //Creación de una tarea nueva 
@@ -85,7 +84,6 @@ async function crearTarea(event) {
 //Listar tareas
 async function mostrarLista() {
   document.getElementById("titulo").innerText = "Lista de tareas";
-
   document.getElementById("formularioContenedor").style.display = "none";
   document.getElementById("listaContenedor").style.display = "block";
 
@@ -99,6 +97,11 @@ async function mostrarLista() {
     renderizarTareas(tareas);
   } catch (error) {
     console.error("No se han podido obtener las tareas", error);
+  }
+  
+  // Cerrar menú en móviles después de seleccionar una opción
+  if (window.innerWidth <= 768) {
+    toggleMenu();
   }
 }
 
@@ -320,3 +323,56 @@ async function guardarActualizacion(event, id) {
   }
 }
 
+// Funcionalidad del menú hamburguesa
+function toggleMenu() {
+  const sidebar = document.querySelector('.sidebar');
+  const hamburger = document.querySelector('.hamburger-menu');
+  const overlay = document.querySelector('.overlay');
+  const content = document.querySelector('.content');
+
+  sidebar.classList.toggle('active');
+  hamburger.classList.toggle('active');
+  overlay.classList.toggle('active');
+  
+  // En móviles, evitar el scroll del body cuando el menú está abierto
+  if (sidebar.classList.contains('active')) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = '';
+  }
+}
+
+
+
+// Funcionalidad del menú hamburguesa
+function toggleMenu() {
+  const sidebar = document.querySelector('.sidebar');
+  const hamburger = document.querySelector('.hamburger-menu');
+  const overlay = document.querySelector('.overlay');
+  const content = document.querySelector('.content');
+
+  sidebar.classList.toggle('active');
+  hamburger.classList.toggle('active');
+  overlay.classList.toggle('active');
+  
+  // En móviles, evitar el scroll del body cuando el menú está abierto
+  if (sidebar.classList.contains('active')) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = '';
+  }
+}
+
+// Cerrar menú al redimensionar la ventana si pasa al modo escritorio
+window.addEventListener('resize', function() {
+  if (window.innerWidth > 768) {
+    const sidebar = document.querySelector('.sidebar');
+    const hamburger = document.querySelector('.hamburger-menu');
+    const overlay = document.querySelector('.overlay');
+    
+    sidebar.classList.remove('active');
+    hamburger.classList.remove('active');
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+});
