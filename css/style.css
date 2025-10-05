@@ -157,8 +157,8 @@ th:nth-child(4), td:nth-child(4) { /* Acciones */
 }
 
 /* Ajustar ancho de columnas */
-th:nth-child(1) { width: 25%; } /* Título */
-th:nth-child(2) { width: 40%; } /* Descripción */
+th:nth-child(1) { width: 40%; } /* Título */
+th:nth-child(2) { width: 30%; } /* Descripción */
 th:nth-child(3) { width: 15%; } /* Completado */
 th:nth-child(4) { width: 20%; } /* Acciones */
 
