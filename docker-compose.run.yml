@@ -1,0 +1,9 @@
+version: "3.9"
+
+services:
+  frontend:
+    container_name: gestor_tareas
+    image: wilmerg98/todolist_html_css_js:latest
+    ports:
+      - "8080:80"
+    restart: always

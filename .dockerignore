@@ -1,0 +1,12 @@
+# Archivos y carpetas que no se deben copiar al contenedor
+node_modules
+.git
+.gitignore
+Dockerfile
+docker-compose.yml
+docker-compose.run.yml
+docker-compose.build.yml
+README.md
+*.log
+*.env
+#nginx.conf -> genera un prolema ya eque excluye el servicio de nginx

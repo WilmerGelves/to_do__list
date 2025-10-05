@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+  frontend:
+    container_name: gestor_tareas
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: frontend-todotest:latest
+    ports:
+      - "8080:80"    # Mapea el puerto 80 del contenedor al 8080 del host
+    restart: always
